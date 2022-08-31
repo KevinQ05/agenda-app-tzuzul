@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useOutsideAlerter } from "../../utils/utils";
 import DropDown from "../DropDown/DropDown";
 import Logo from "../Logo/Logo";
+import { Link } from "react-router-dom";
 
 export default function Drawer(props) {
   const drawerRef = useRef(null);
@@ -25,6 +26,14 @@ export default function Drawer(props) {
       <DropDown label="Groups">
         <div>Grupo 1</div>
         <div>Grupo 2</div>
+      </DropDown>
+      <DropDown label="Pages-PlaceHolder">
+        <Link to="/" onClick={props.onClickOut}>
+          Home
+        </Link>
+        <Link to="/login" onClick={props.onClickOut}>
+          Login
+        </Link>
       </DropDown>
     </div>
   );
