@@ -1,0 +1,11 @@
+@import "../../utils/variables";
+
+.drawer-desktop {
+    @extend %drawer;
+    visibility: hidden;
+
+    @include screen(lg) {
+        visibility: visible;
+        min-height: 100vh;
+    }
+}

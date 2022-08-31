@@ -1,0 +1,42 @@
+@import "../../utils/variables";
+
+.mobile-nav {
+    @extend %default-flex;
+    justify-content: space-between;
+
+    @include screen(lg) {
+        display: none;
+    }
+
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background-color: var(--base-200);
+    height: 3rem;
+    // border-style: solid;
+    // border-color: var(--border);
+    // border-width: 0 0 2px 0;
+
+    .mobile-nav-item {
+        width: 33%;
+        height: 100%;
+    }
+
+    .left,
+    .center,
+    .right {
+        @extend %default-flex;
+    }
+
+    .left {
+        justify-content: start;
+        .mobile-menu-icon {
+            @extend %button;
+            width: 20px;
+            height: 20px;
+            padding: 0.5rem;
+            margin-left: 1rem;
+        }
+    }
+}
