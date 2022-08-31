@@ -4,6 +4,9 @@ import { useOutsideAlerter } from "../../utils/utils";
 import DropDown from "../DropDown/DropDown";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
+import LinkButton from "../LinkButton/LinkButton";
+import { AiOutlineHome } from "react-icons/ai";
+import { TbLogout } from "react-icons/tb";
 
 export default function Drawer(props) {
   const drawerRef = useRef(null);
@@ -16,8 +19,13 @@ export default function Drawer(props) {
       style={props.style}
       ref={drawerRef}
     >
-      <Logo className="logo-desktop" />
-      <DropDown label="My tasks">
+      <LinkButton
+        to="/"
+        className="btn-full"
+        icon={<AiOutlineHome />}
+        label="Home"
+      />
+      <DropDown label="My Tasks">
         <li>Item 1</li>
         <li>Item 2</li>
         <li>Item 3</li>
@@ -26,15 +34,18 @@ export default function Drawer(props) {
       <DropDown label="Groups">
         <div>Grupo 1</div>
         <div>Grupo 2</div>
+        <div>Grupo 2</div>
+        <div>Grupo Final</div>
       </DropDown>
-      <DropDown label="Pages-PlaceHolder">
-        <Link to="/" onClick={props.onClickOut}>
-          Home
-        </Link>
-        <Link to="/login" onClick={props.onClickOut}>
-          Login
-        </Link>
-      </DropDown>
+      <div className="drawer-footer">
+        <LinkButton
+          to="/login"
+          className="btn-full footer-item"
+          icon={<TbLogout />}
+          label="Log out"
+        />
+        <Logo className="logo-desktop" />
+      </div>
     </div>
   );
 }

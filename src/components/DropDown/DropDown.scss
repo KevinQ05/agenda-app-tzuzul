@@ -17,13 +17,15 @@
     border-radius: var(--button-radius);
     user-select: none;
     animation-name: slideOpen;
-    transition: height 1000ms ease;
+    overflow: hidden;
 
     .dropdown-label-container {
         @extend %default-flex;
         @extend %button;
         justify-content: space-between;
         width: 100%;
+        height: 35px;
+        max-height: 35px;
         margin: 0rem 0.5rem 0.25rem 0.5rem;
 
         .dropdown-label-text {
@@ -43,6 +45,7 @@
 
         & > *:not(.dropdown) {
             padding: 0 0 0.5rem 1.5rem;
+            height: 25px;
         }
     }
 }

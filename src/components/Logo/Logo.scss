@@ -18,4 +18,9 @@
     @include screen(lg) {
         visibility: visible;
     }
+    margin-top: auto;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--base-300);
+    }
 }
