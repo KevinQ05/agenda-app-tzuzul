@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<NavigationWrapper />}>
           <Route exact path="/" element={<Home />} />
-          <Route path="dos" element={<>Pipi pupu check</>} />
         </Route>
         <Route path="/login" element={<Login />} />
       </Routes>
