@@ -1,6 +1,7 @@
 @import "./utils/variables";
 
 #root {
+    display: grid;
     @include screen(lg) {
         display: grid;
         grid-template-areas: "drawer content";

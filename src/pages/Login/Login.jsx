@@ -1,25 +1,20 @@
-import React from "react";
+import "./Login.scss";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import LoginDock from "../../components/LoginDock/LoginDock";
 
 export default function Login() {
-  const email = useRef();
-  const password = useRef();
-
-  function login(event) {
+  function login(event, email, password) {
     event.preventDefault();
-    console.log(email.current.value);
-    console.log(password.current.value);
+    console.log(email);
+    console.log(password);
   }
   return (
-    <div className="content">
-      <h1>Login</h1>
-      <Link to="/">To Home</Link>
-      <form action="">
-        <input ref={email} type="email" placeholder="email" />
-        <input ref={password} type="password" placeholder="password" />
-        <input type="submit" onClick={login} />
-      </form>
+    <div className="login-page">
+      <section className="login-content">
+        <h1>Login</h1>
+        <Link to="/">To Home</Link>
+        <LoginDock onClick={login} />
+      </section>
     </div>
   );
 }

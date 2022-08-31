@@ -1,0 +1,24 @@
+@import "../../utils/variables";
+
+.login-page {
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url("../../assets/images/y-so-serious.png");
+    overflow: hidden;
+}
+
+.login-content {
+    width: 90%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    @include screen(md) {
+        width: 75%;
+    }
+    @include screen(lg) {
+        width: 25%;
+    }
+}
