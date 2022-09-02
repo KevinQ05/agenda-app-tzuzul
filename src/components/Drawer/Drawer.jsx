@@ -3,12 +3,14 @@ import { useRef } from "react";
 import { useOutsideAlerter } from "../../utils/utils";
 import DropDown from "../DropDown/DropDown";
 import Logo from "../Logo/Logo";
-import { Link } from "react-router-dom";
 import LinkButton from "../LinkButton/LinkButton";
 import { AiOutlineHome } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
+import useAuthContext from "../../hooks/useAuthContext";
 
 export default function Drawer(props) {
+  const { logout } = useAuthContext();
+
   const drawerRef = useRef(null);
   useOutsideAlerter(drawerRef, props.onClickOut);
 
@@ -43,6 +45,7 @@ export default function Drawer(props) {
           className="btn-full footer-item"
           icon={<TbLogout />}
           label="Log out"
+          onClick={logout}
         />
         <Logo className="logo-desktop" />
       </div>

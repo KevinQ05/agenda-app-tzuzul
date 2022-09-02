@@ -1,9 +1,18 @@
 import "./Home.scss";
 import React from "react";
+import { Navigate } from "react-router-dom";
+import useAuthContext from "../../hooks/useAuthContext";
 
 export default function Home() {
+  const { user } = useAuthContext();
+
+  if (!user) {
+    return <Navigate replace to="/login" />;
+  }
+
   return (
     <div className="content">
+      {console.log(user)}
       <h1>Home</h1>
       <p className="sm">This is mobile</p>
       <p className="md">This is tablet</p>

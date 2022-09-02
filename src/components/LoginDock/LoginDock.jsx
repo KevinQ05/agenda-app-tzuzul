@@ -1,9 +1,21 @@
 import "./LoginDock.scss";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuthContext from "../../hooks/useAuthContext";
 
-export default function LoginDock(props) {
+export default function LoginDock() {
+  const { login } = useAuthContext();
+
   const email = useRef();
   const password = useRef();
+
+  let navigate = useNavigate();
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await login(email, password);
+    navigate("../", { replace: true });
+  }
   return (
     <>
       <form className="login-dock">
@@ -28,9 +40,7 @@ export default function LoginDock(props) {
         />
         <button
           className="btn login-btn"
-          onClick={(event) =>
-            props.onClick(event, email.current.value, password.current.value)
-          }
+          onClick={(event) => handleSubmit(event)}
         >
           Log In
         </button>
