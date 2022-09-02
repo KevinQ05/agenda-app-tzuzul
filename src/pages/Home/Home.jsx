@@ -12,7 +12,6 @@ export default function Home() {
 
   return (
     <div className="content">
-      {console.log(user)}
       <h1>Home</h1>
       <p className="sm">This is mobile</p>
       <p className="md">This is tablet</p>

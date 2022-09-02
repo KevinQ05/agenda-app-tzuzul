@@ -8,7 +8,7 @@ export default function AuthProvider({ children }) {
   // https://randomuser.me/api/
 
   const login = async (email, password) => {
-    const { data } = await axios.get("https://randomuser.me/api/");
+    const data = await fetchUser();
     setUser(data.results[0]);
   };
 
@@ -17,12 +17,17 @@ export default function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    login();
-  }, []);
+    fetchUser();
+  }, [user]);
 
   return (
-    <AuthContext.Provider value={{ user, login }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
+
+const fetchUser = async () => {
+  const { data } = await axios.get("https://randomuser.me/api/");
+  return data;
+};
