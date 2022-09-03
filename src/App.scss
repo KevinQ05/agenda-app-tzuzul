@@ -19,7 +19,7 @@ a {
 }
 
 .content {
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
@@ -32,4 +32,18 @@ a {
 
 .wrapper-active {
     filter: blur(3px) opacity(70%);
+    pointer-events: none;
+}
+
+.modal {
+    display: none;
+    background-color: var(--base-lighter-100);
+    position: fixed;
+    z-index: 100;
+    top: 15%;
+    left: 5%;
+    width: 90%;
+    height: 70%;
+
+    border-radius: var(--default-radius);
 }

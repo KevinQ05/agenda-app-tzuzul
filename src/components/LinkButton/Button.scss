@@ -10,7 +10,7 @@
     background-color: var(--button-color);
     border: 1px solid var(--button-border);
     justify-content: center;
-
+    user-select: none;
     &:hover {
         border-color: var(--button-color);
     }
@@ -38,4 +38,9 @@
 }
 .btn-full {
     width: 90%;
+}
+.btn-ghost {
+    background-color: transparent !important;
+    border: none;
+    width: fit-content;
 }

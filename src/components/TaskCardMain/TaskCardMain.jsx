@@ -1,10 +1,14 @@
 import "./TaskCardMain.scss";
 import React, { useRef } from "react";
 import { useState } from "react";
-import { FiChevronDown } from "react-icons/fi";
-import { useSpring, animated } from "react-spring";
+import { FiArrowLeft, FiClock, FiUsers } from "react-icons/fi";
+import { Transition, animated } from "react-spring";
 import { useEffect } from "react";
-import useResize from "../../hooks/useResize";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { ImParagraphLeft } from "react-icons/im";
+import Button from "../Button/Button";
+import TaskDetails from "../TaskDetails/TaskDetails";
 
 const colors = [
   { name: "default", value: "#d4d2d6" },
@@ -15,77 +19,60 @@ const colors = [
   { name: "Purple", value: "#b371f5" },
 ];
 
-export default function TaskCardMain() {
+export default function TaskCardMain({ task }) {
   const [accentColor, setAccentColor] = useState(colors[0]);
   const [isOpen, setIsOpen] = useState(false);
-  const [height, setHeight] = useState(0);
 
-  const hiddenContent = useRef();
+  const taskCard = useRef();
+
+  function setBorderColor(color) {
+    taskCard.current.style.setProperty("border-left-color", color);
+  }
+
+  function handleOpen() {
+    const navbar = document.getElementById("mobile-nav");
+    navbar.classList.toggle("navbar-slide");
+    setIsOpen(!isOpen);
+  }
 
   useEffect(() => {
     setBorderColor(accentColor.value);
   }, [accentColor]);
 
-  useEffect(() => {
-    setHeight(hiddenContent.current?.clientHeight || 0);
-    console.log(height);
-  });
-
   // For animation
-  const flip = useSpring({
-    rotate: isOpen ? "180deg" : "0",
-  });
-  const AnimatedChevron = animated(FiChevronDown);
-  const growDown = useSpring({
-    height: isOpen ? `${height + 100}px` : `100px`,
-  });
-
+  const AnimatedTaskDetails = animated(TaskDetails);
   return (
-    <animated.div
-      className="task-card task-card-container"
-      id="task-card-container"
-      style={growDown}
-    >
+    <>
       <div
-        className="task-card-header"
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
+        className="task-card task-card-container"
+        id="task-card-container"
+        ref={taskCard}
+        onClick={handleOpen}
       >
-        <div className="task-card task-card-title">
-          Parcial presencial de EDP{" "}
+        <div className="task-card-header">
+          <div className="task-card task-card-title">{task.name}</div>
         </div>
-        <AnimatedChevron
-          className={"task-card-chevron"}
-          style={flip}
-          size={30}
-        />
-      </div>
-      <div className="task-card task-card-date">
-        <span className="task-card task-card-hour">15:30 - 17:30</span>
-        <span className="task-card task-card-date">16 Sept</span>
-      </div>
-      {isOpen ? (
-        <div className="task-card-open-content" ref={hiddenContent}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta enim,
-          beatae quasi vitae molestias aliquam dolore reiciendis explicabo
-          laudantium molestiae quia iusto delectus id voluptas optio. Dolor odit
-          distinctio expedita? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Soluta enim, beatae quasi vitae molestias aliquam
-          dolore reiciendis explicabo laudantium molestiae quia iusto delectus
-          id voluptas optio. Dolor odit distinctio expedita? Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Soluta enim, beatae quasi vitae
-          molestias aliquam dolore reiciendis explicabo laudantium molestiae
-          quia iusto delectus id voluptas optio. Dolor odit distinctio expedita?
+        <div className="task-card task-card-date">
+          <span className="task-card task-card-hour">15:30 - 17:30</span>
+          <span className="task-card task-card-date">16 Sept</span>
         </div>
-      ) : (
-        <></>
-      )}
-    </animated.div>
+      </div>
+      <Transition
+        items={isOpen}
+        from={{ x: "100%" }}
+        enter={{ x: "0%" }}
+        leave={{ x: "100%" }}
+      >
+        {(styles, item) =>
+          item && (
+            <AnimatedTaskDetails
+              task={task}
+              style={styles}
+              goBack={handleOpen}
+            />
+          )
+        }
+      </Transition>
+    </>
   );
-}
-
-function setBorderColor(color) {
-  const container = document.getElementById("task-card-container");
-  container.style.setProperty("border-color", color);
 }

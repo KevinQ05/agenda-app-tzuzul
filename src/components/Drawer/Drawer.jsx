@@ -1,6 +1,6 @@
 import "./Drawer.scss";
 import { useRef } from "react";
-import { useOutsideAlerter } from "../../utils/utils";
+import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 import DropDown from "../DropDown/DropDown";
 import Logo from "../Logo/Logo";
 import LinkButton from "../LinkButton/LinkButton";

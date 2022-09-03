@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useOutsideAlerter(ref, callback = () => null) {
+export default function useOutsideAlerter(ref, callback = () => null) {
   useEffect(() => {
     /**
      * Alert if clicked on outside of element

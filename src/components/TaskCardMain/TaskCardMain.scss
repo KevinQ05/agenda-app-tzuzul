@@ -4,8 +4,10 @@
     background-color: var(--base-300);
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: 0.2rem;
     border-radius: var(--default-radius);
+    margin-bottom: 0.35rem;
+    height: fit-content;
 }
 
 .task-card-container {
@@ -16,7 +18,7 @@
 }
 
 .task-card {
-    padding: 0.5rem;
+    padding: 0.3rem 0.2rem;
 
     .task-card-header {
         display: flex;
@@ -26,6 +28,7 @@
         width: 80%;
         font-size: large;
         font-weight: 600;
+        padding-bottom: 0;
     }
     .task-card-chevron {
         margin: auto auto;
@@ -37,6 +40,89 @@
 
         .task-card-hour {
             margin-right: auto;
+        }
+    }
+    .task-card-open-content {
+        padding: 0.2rem 0.25rem;
+    }
+}
+
+.task-full {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--base-300);
+    width: 90%;
+    min-height: 95%;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+
+    .task-full-header {
+        height: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .task-arrow-container {
+            height: 100%;
+            width: 3rem;
+        }
+    }
+
+    .task-full-title {
+        font-size: large;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .task-full-date {
+        height: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+    }
+    .task-full-users {
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+        .users-item {
+            margin-right: 1.2rem;
+        }
+    }
+    .task-full-location {
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+        .location-item {
+            margin-right: 1.2rem;
+        }
+    }
+    .task-full-description {
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+        .description-item {
+            margin-right: 1.2rem;
+        }
+    }
+    .task-full-footer {
+        display: flex;
+        justify-content: end;
+        margin-top: auto;
+        .footer-save {
+            color: white;
+            font-weight: 600;
+            background-color: var(--primary-300);
+            border-color: var(--primary-200);
         }
     }
 }

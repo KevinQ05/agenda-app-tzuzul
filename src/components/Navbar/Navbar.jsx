@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 
 export default function Navbar(props) {
   return (
-    <nav className="mobile-nav">
+    <nav className="mobile-nav" id="mobile-nav">
       <div className="mobile-nav-item left">
         <GiHamburgerMenu
           className="button mobile-menu-icon"
