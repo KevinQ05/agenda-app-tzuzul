@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import AuthContext from "./AuthContext";
 
 export default function AuthProvider({ children }) {
@@ -20,11 +20,11 @@ export default function AuthProvider({ children }) {
     fetchUser();
   }, [user]);
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = useMemo(() => {
+    return { user, login, logout };
+  }, [user]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 const fetchUser = async () => {
