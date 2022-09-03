@@ -1,0 +1,26 @@
+@import "../../utils/variables";
+
+.user-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    @include screen(lg) {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .card-profile-pic {
+        border-radius: 50%;
+        scale: 0.7;
+        @include screen(lg) {
+            scale: 1;
+        }
+    }
+
+    .user-card-name {
+        @include screen(lg) {
+            margin-left: 1rem;
+        }
+    }
+}

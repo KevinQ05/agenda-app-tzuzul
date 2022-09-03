@@ -8,7 +8,7 @@ export default function AuthProvider({ children }) {
   // https://randomuser.me/api/
 
   const login = async (email, password) => {
-    const data = await fetchUser();
+    const { data } = await axios.get("https://randomuser.me/api/");
     setUser(data.results[0]);
   };
 
@@ -28,6 +28,6 @@ export default function AuthProvider({ children }) {
 }
 
 const fetchUser = async () => {
-  const { data } = await axios.get("https://randomuser.me/api/");
-  return data;
+  // Todo, checks user from API
+  return;
 };

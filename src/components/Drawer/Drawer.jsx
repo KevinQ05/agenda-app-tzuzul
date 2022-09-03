@@ -7,6 +7,7 @@ import LinkButton from "../LinkButton/LinkButton";
 import { AiOutlineHome } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import useAuthContext from "../../hooks/useAuthContext";
+import UserCard from "../UserCard/UserCard";
 
 export default function Drawer(props) {
   const { logout } = useAuthContext();
@@ -21,6 +22,7 @@ export default function Drawer(props) {
       style={props.style}
       ref={drawerRef}
     >
+      <UserCard />
       <LinkButton
         to="/"
         className="btn-full"
