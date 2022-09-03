@@ -22,7 +22,9 @@ a {
 .content {
     width: 95%;
     margin: auto;
-    min-height: 100vh;
+    @include screen(lg) {
+        min-height: 100vh;
+    }
 }
 
 .spacer {

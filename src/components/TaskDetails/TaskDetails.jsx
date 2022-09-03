@@ -4,6 +4,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ImParagraphLeft } from "react-icons/im";
 import Button from "../Button/Button";
 import { FiArrowLeft, FiClock, FiUsers } from "react-icons/fi";
+import DateForm from "../DateForm/DateForm";
 
 export default function TaskDetails({ task, goBack, style, onSave }) {
   return (
@@ -15,11 +16,7 @@ export default function TaskDetails({ task, goBack, style, onSave }) {
         <BsThreeDotsVertical size={20} />
       </div>
       <div className="task-full-title">{task.name}</div>
-      <div className="task-full-date">
-        <FiClock size={20} />
-        <span>Sábado 3 de Sept.</span>
-        <span>15:30 - 17:30</span>
-      </div>
+      <DateForm />
       <div className="task-full-users">
         <FiUsers className="users-item" size={20} />
         <span className="users-item">Just me</span>

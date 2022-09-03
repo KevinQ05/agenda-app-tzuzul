@@ -59,9 +59,9 @@ export default function TaskCardMain({ task }) {
       </div>
       <Transition
         items={isOpen}
-        from={{ x: "100%" }}
-        enter={{ x: "0%" }}
-        leave={{ x: "100%" }}
+        from={{ marginLeft: "100%" }}
+        enter={{ marginLeft: "0%" }}
+        leave={{ marginLeft: "100%" }}
       >
         {(styles, item) =>
           item && (
