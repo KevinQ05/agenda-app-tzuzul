@@ -14,7 +14,7 @@ export default function Navbar(props) {
       <div className="mobile-nav-item center">
         <Logo />
       </div>
-      <div className="mobile-nav-item right">Placeholder</div>
+      <div className="mobile-nav-item right"></div>
     </nav>
   );
 }
