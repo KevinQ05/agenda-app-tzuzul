@@ -8,6 +8,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import useAuthContext from "../../hooks/useAuthContext";
 import UserCard from "../UserCard/UserCard";
+import Button from "../Button/Button";
 
 export default function Drawer(props) {
   const { logout } = useAuthContext();
