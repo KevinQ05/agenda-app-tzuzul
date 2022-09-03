@@ -1,9 +1,13 @@
 import "./UserCard.scss";
 import React from "react";
 import useAuthContext from "../../hooks/useAuthContext";
+import { Navigate } from "react-router-dom";
 
 export default function UserCard() {
   const { user } = useAuthContext();
+  if (!user) {
+    return <Navigate replace to="/login" />;
+  }
 
   const { name, picture } = user;
   return (
