@@ -1,22 +1,5 @@
 @import "../../utils/variables";
 
-.sm {
-    @include screen(sm) {
-        display: none;
-    }
-}
-.md {
-    display: none;
-    @include screen(sm) {
-        display: block;
-    }
-    @include screen(lg) {
-        display: none;
-    }
-}
-.lg {
-    display: none;
-    @include screen(lg) {
-        display: block;
-    }
+.content-home {
+    margin-top: 3rem;
 }
