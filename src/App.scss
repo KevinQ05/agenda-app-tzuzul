@@ -4,7 +4,8 @@
     display: grid;
     @include screen(lg) {
         display: grid;
-        grid-template-areas: "drawer content";
+        grid-template-areas: "drawer content interactive";
+        grid-template-columns: min-content 250px auto;
     }
 }
 
@@ -21,6 +22,14 @@ a {
 .content {
     width: 95%;
     margin: auto;
+    min-height: 100vh;
+}
+
+.spacer {
+    height: 3rem;
+    @include screen(lg) {
+        height: 0;
+    }
 }
 
 .wrapper {

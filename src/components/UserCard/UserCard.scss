@@ -3,11 +3,13 @@
 .user-card {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
     margin-bottom: 2rem;
     @include screen(lg) {
         flex-direction: row;
         align-items: center;
-        width: 80%;
+        width: 90%;
+        font-size: 0.9rem;
     }
 
     .card-profile-pic {
@@ -16,8 +18,8 @@
         margin: auto auto;
         border-radius: 50%;
         @include screen(lg) {
-            height: 40px;
-            width: 40px;
+            height: 30px;
+            width: 30px;
             margin: 0;
         }
     }

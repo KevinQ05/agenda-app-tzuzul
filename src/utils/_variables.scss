@@ -38,6 +38,7 @@
     @include screen(lg) {
         position: relative;
         grid-area: drawer;
+        font-size: 0.9rem;
     }
 
     background-color: var(--base-300);

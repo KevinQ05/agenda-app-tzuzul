@@ -38,9 +38,6 @@ export default function NavigationWrapper(props) {
         <Spacer />
         <Outlet />
       </div>
-      <div className="modal">
-        <h1>MODAL</h1>
-      </div>
     </>
   );
 }
