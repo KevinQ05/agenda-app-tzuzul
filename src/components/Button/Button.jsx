@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import "../LinkButton/Button.scss";
 
-export default function Button({ className, icon, children }) {
+export default function Button({ className, icon, children, onClick }) {
   const [clicked, setClicked] = useState(false);
 
   const handleEvent = (event) => {
@@ -29,6 +29,7 @@ export default function Button({ className, icon, children }) {
       onMouseUp={(e) => handleEvent(e)}
       onTouchEnd={(e) => handleEvent(e)}
       style={resize}
+      onClick={onClick}
     >
       <div className="btn-item btn-item-icon">{icon ? icon : ""}</div>
       <div className="btn-item btn-item-label">{children}</div>

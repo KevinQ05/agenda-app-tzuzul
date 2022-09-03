@@ -69,6 +69,7 @@ export default function TaskCardMain({ task }) {
               task={task}
               style={styles}
               goBack={handleOpen}
+              onSave={handleOpen} //Temporary
             />
           )
         }

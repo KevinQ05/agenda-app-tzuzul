@@ -28,6 +28,7 @@ export default function Home() {
 
   return (
     <div className="content content-home" id="content-home">
+      <h2>Upcoming Tasks:</h2>
       {taskList}
     </div>
   );

@@ -5,7 +5,7 @@ import { ImParagraphLeft } from "react-icons/im";
 import Button from "../Button/Button";
 import { FiArrowLeft, FiClock, FiUsers } from "react-icons/fi";
 
-export default function TaskDetails({ task, goBack, style }) {
+export default function TaskDetails({ task, goBack, style, onSave }) {
   return (
     <div className="task-full" style={style}>
       <div className="task-full-header">
@@ -35,7 +35,9 @@ export default function TaskDetails({ task, goBack, style }) {
         </span>
       </div>
       <div className="task-full-footer">
-        <Button className="footer-save">Save</Button>
+        <Button className="footer-save" onClick={onSave}>
+          Save
+        </Button>
       </div>
     </div>
   );
