@@ -38,7 +38,7 @@ export default function TaskDetails({ task, goBack, style, onSave }) {
         </span>
       </div>
       <div className="task-full-footer">
-        <Button className="footer-save" onClick={onSave}>
+        <Button className="footer-save" onClick={() => onSave(currentDate)}>
           Save
         </Button>
       </div>

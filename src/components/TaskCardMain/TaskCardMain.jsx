@@ -1,13 +1,9 @@
 import "./TaskCardMain.scss";
 import React, { useRef } from "react";
 import { useState } from "react";
-import { FiArrowLeft, FiClock, FiUsers } from "react-icons/fi";
 import { Transition, animated } from "react-spring";
 import { useEffect } from "react";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { ImParagraphLeft } from "react-icons/im";
-import Button from "../Button/Button";
+
 import TaskDetails from "../TaskDetails/TaskDetails";
 
 const colors = [
@@ -22,6 +18,7 @@ const colors = [
 export default function TaskCardMain({ task }) {
   const [accentColor, setAccentColor] = useState(colors[0]);
   const [isOpen, setIsOpen] = useState(false);
+  const [currentDate, setCurrentDate] = useState(task.date || new Date());
 
   const taskCard = useRef();
 
@@ -35,6 +32,10 @@ export default function TaskCardMain({ task }) {
     setIsOpen(!isOpen);
   }
 
+  function handleSave(date) {
+    setCurrentDate(date);
+    setIsOpen(!isOpen);
+  }
   useEffect(() => {
     setBorderColor(accentColor.value);
   }, [accentColor]);
@@ -54,7 +55,9 @@ export default function TaskCardMain({ task }) {
         </div>
         <div className="task-card task-card-date">
           <span className="task-card task-card-hour">15:30 - 17:30</span>
-          <span className="task-card task-card-date">16 Sept</span>
+          <span className="task-card task-card-date">
+            {getDateString(currentDate)}
+          </span>
         </div>
       </div>
       <Transition
@@ -69,11 +72,39 @@ export default function TaskCardMain({ task }) {
               task={task}
               style={styles}
               goBack={handleOpen}
-              onSave={handleOpen} //Temporary
+              onSave={handleSave} //Temporary
             />
           )
         }
       </Transition>
     </>
   );
+}
+function getDateString(date) {
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return `${weekday[date.getDay()]}, ${
+    months[date.getMonth()]
+  } ${date.getDate()}`;
 }
