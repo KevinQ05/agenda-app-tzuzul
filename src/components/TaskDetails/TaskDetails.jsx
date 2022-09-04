@@ -5,8 +5,11 @@ import { ImParagraphLeft } from "react-icons/im";
 import Button from "../Button/Button";
 import { FiArrowLeft, FiClock, FiUsers } from "react-icons/fi";
 import DateForm from "../DateForm/DateForm";
+import { useState } from "react";
 
 export default function TaskDetails({ task, goBack, style, onSave }) {
+  const [currentDate, setCurrentDate] = useState(task.date || new Date());
+
   return (
     <div className="task-full" style={style}>
       <div className="task-full-header">
@@ -16,7 +19,10 @@ export default function TaskDetails({ task, goBack, style, onSave }) {
         <BsThreeDotsVertical size={20} />
       </div>
       <div className="task-full-title">{task.name}</div>
-      <DateForm />
+      <DateForm
+        date={currentDate}
+        setDate={(newDate) => setCurrentDate(newDate)}
+      />
       <div className="task-full-users">
         <FiUsers className="users-item" size={20} />
         <span className="users-item">Just me</span>

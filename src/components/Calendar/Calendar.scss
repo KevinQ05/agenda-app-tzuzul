@@ -1,0 +1,32 @@
+@import "../../utils/variables";
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    .calendar-header,
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        text-align: center;
+
+        li {
+            list-style: none;
+        }
+        .calendar-header-item {
+            padding: 6px;
+        }
+        .calendar-grid-item {
+            padding: 6px;
+        }
+        .dimmed-item {
+            color: var(--base-content-200);
+        }
+        .selected-item {
+            background-color: var(--primary-300);
+            border-radius: 15px;
+        }
+    }
+    .calendar-header {
+        color: var(--base-content-100);
+    }
+}

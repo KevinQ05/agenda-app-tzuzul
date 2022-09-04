@@ -1,10 +1,50 @@
 @import "../../utils/variables";
 
-.date-form {
+.date-form-mobile {
     height: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 0.5rem;
     margin-bottom: 1rem;
+
+    .displayed-date {
+        width: 12rem;
+    }
+
+    .date-picker {
+        background-color: var(--base-100);
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        translate: -38px 20px;
+        border-radius: var(--default-radius);
+        box-shadow: 1px 14px 22px -5px rgba(43, 45, 47, 0.59);
+        -webkit-box-shadow: 1px 14px 22px -5px rgba(43, 45, 47, 0.59);
+        -moz-box-shadow: 1px 14px 22px -5px rgba(43, 45, 47, 0.59);
+        border: 1px solid var(--border);
+
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0;
+        .date-picker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+            .date-picker-arrows {
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                .date-arrow {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 100%;
+                }
+            }
+        }
+    }
 }
