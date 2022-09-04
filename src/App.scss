@@ -1,35 +1,35 @@
 @import "./utils/variables";
 
 #root {
+  display: grid;
+  @include screen(lg) {
     display: grid;
-    @include screen(lg) {
-        display: grid;
-        grid-template-areas: "drawer content";
-    }
+    grid-template-areas: "drawer content";
+  }
 }
 
 body {
-    color: var(--base-content);
-    background-color: var(--base-100);
+  color: var(--base-content);
+  background-color: var(--base-100);
 }
 
 a {
-    color: var(--base-content);
-    text-decoration: none;
+  color: var(--base-content);
+  text-decoration: none;
 }
 
 .content {
-    width: 90%;
-    margin: auto;
+  width: 90%;
+  margin: auto;
 }
 
 .wrapper {
-    @include screen(lg) {
-        grid-area: content;
-    }
-    transition: all 300ms ease-out;
+  @include screen(lg) {
+    grid-area: content;
+  }
+  transition: all 300ms ease-out;
 }
 
 .wrapper-active {
-    filter: blur(3px) opacity(70%);
+  filter: blur(3px) opacity(70%);
 }
