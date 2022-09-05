@@ -18,7 +18,9 @@ const colors = [
 export default function TaskCardMain({ task }) {
   const [accentColor, setAccentColor] = useState(task.color || colors[0]);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentDate, setCurrentDate] = useState(task.date || new Date());
+  const [currentDate, setCurrentDate] = useState(
+    task.date ? new Date(task.date) : new Date()
+  );
 
   const taskCard = useRef();
 

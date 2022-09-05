@@ -8,7 +8,9 @@ import DateForm from "../DateForm/DateForm";
 import { useState } from "react";
 
 export default function TaskDetails({ task, goBack, style, onSave }) {
-  const [currentDate, setCurrentDate] = useState(task.date || new Date());
+  const [currentDate, setCurrentDate] = useState(
+    task.date ? new Date(task.date) : new Date()
+  );
 
   return (
     <div className="task-full" style={style}>

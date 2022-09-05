@@ -3,22 +3,12 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import useAuthContext from "../../hooks/useAuthContext";
 import TaskCardMain from "../../components/TaskCardMain/TaskCardMain";
-// Mock for dev
-const tasks = [
-  {
-    name: "Parcial Presencial EDP",
-    date: new Date(2022, 8, 16),
-  },
-  {
-    name: "Implementar funcionalidad: Task Manager",
-  },
-  {
-    name: "Sale My Hero temp. 6",
-    date: new Date(2022, 9, 1),
-  },
-];
+const { tasks } = require("../../data/tasks.json");
+
 export default function Home() {
   const { user } = useAuthContext();
+
+  console.log(tasks);
 
   if (!user) {
     return <Navigate replace to="/login" />;
