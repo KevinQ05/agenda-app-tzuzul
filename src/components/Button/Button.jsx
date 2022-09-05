@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import "../LinkButton/Button.scss";
 
-export default function Button({ className, icon, children, onClick }) {
+export default function Button({ className, icon, children, onClick, ref }) {
   const [clicked, setClicked] = useState(false);
 
   const handleEvent = (event) => {

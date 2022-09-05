@@ -4,7 +4,7 @@ import "./Calendar.scss";
 import DayNumber from "../DayNumber/DayNumber";
 import { getMonthFromIndex } from "../../utils/helpers/calendar";
 import { useEffect, useState } from "react";
-import { useSpring, animated } from "react-spring";
+// import { useSpring, animated } from "react-spring";
 
 const daysOfWeek = [
   <span className="calendar-header-item" key={"sunday"}>

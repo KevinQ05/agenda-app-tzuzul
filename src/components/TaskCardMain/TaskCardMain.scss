@@ -81,9 +81,18 @@
         }
     }
 
+    textarea {
+        background-color: var(--base-300);
+        color: var(--base-content);
+        font-family: inherit;
+        border: none;
+        resize: none;
+    }
+
     .task-full-title {
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 0.7rem;
+        font-size: larger;
     }
     .task-full-date {
         height: 2rem;

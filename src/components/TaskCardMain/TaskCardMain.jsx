@@ -15,7 +15,7 @@ const colors = [
   { name: "Purple", value: "#b371f5" },
 ];
 
-export default function TaskCardMain({ task }) {
+export default function TaskCardMain({ task, setTask }) {
   const [accentColor, setAccentColor] = useState(task.color || colors[0]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentDate, setCurrentDate] = useState(
@@ -34,9 +34,10 @@ export default function TaskCardMain({ task }) {
     setIsOpen(!isOpen);
   }
 
-  function handleSave(date) {
-    setCurrentDate(date);
+  function handleSave(task) {
+    setCurrentDate(task.date);
     handleOpen();
+    setTask(task);
   }
   useEffect(() => {
     setBorderColor(accentColor.value);
