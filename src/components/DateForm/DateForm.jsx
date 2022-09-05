@@ -151,22 +151,22 @@ function getDateString(date) {
     "Saturday",
   ];
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
   return `${weekday[date.getDay()]}, ${
     months[date.getMonth()]
-  } ${date.getDate()}`;
+  }. ${date.getDate()}`;
 }
 
 function getMonthString(date) {

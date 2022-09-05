@@ -7,12 +7,14 @@ import TaskCardMain from "../../components/TaskCardMain/TaskCardMain";
 const tasks = [
   {
     name: "Parcial Presencial EDP",
+    date: new Date(2022, 8, 16),
   },
   {
     name: "Implementar funcionalidad: Task Manager",
   },
   {
-    name: "Hacer Mandados",
+    name: "Sale My Hero temp. 6",
+    date: new Date(2022, 9, 1),
   },
 ];
 export default function Home() {

@@ -16,7 +16,7 @@ const colors = [
 ];
 
 export default function TaskCardMain({ task }) {
-  const [accentColor, setAccentColor] = useState(colors[0]);
+  const [accentColor, setAccentColor] = useState(task.color || colors[0]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentDate, setCurrentDate] = useState(task.date || new Date());
 
@@ -34,7 +34,7 @@ export default function TaskCardMain({ task }) {
 
   function handleSave(date) {
     setCurrentDate(date);
-    setIsOpen(!isOpen);
+    handleOpen();
   }
   useEffect(() => {
     setBorderColor(accentColor.value);
