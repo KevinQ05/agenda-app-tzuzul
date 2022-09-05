@@ -3,7 +3,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ImParagraphLeft } from "react-icons/im";
 import Button from "../Button/Button";
-import { FiArrowLeft, FiClock, FiUsers } from "react-icons/fi";
+import { FiArrowLeft, FiUsers } from "react-icons/fi";
 import DateForm from "../DateForm/DateForm";
 import { useState } from "react";
 

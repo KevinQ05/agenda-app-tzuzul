@@ -7,6 +7,7 @@ export default function Button({ className, icon, children, onClick }) {
   const [clicked, setClicked] = useState(false);
 
   const handleEvent = (event) => {
+    event.stopPropagation();
     if (event.type === "mousedown" || event.type === "touchstart") {
       setClicked(true);
     } else {

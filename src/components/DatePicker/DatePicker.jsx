@@ -6,13 +6,11 @@ import { Calendar } from "../Calendar/Calendar";
 import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 import { getCalendarDays, getMonthString } from "../../utils/helpers/calendar";
 
-export function DatePicker({ date, onClickOut, setDate }) {
+export function DatePicker({ date, onClickOut, setDate, style }) {
   const [displayedMonth, setDisplayedMonth] = useState(date);
   const [days, setDays] = useState([]);
 
   useEffect(() => {
-    // Due to MATHS, index - day is constant for days of the month, and not for days outside it
-    // will never get bigger than 5
     const newDays = getCalendarDays(displayedMonth);
     setDays(newDays);
   }, [displayedMonth, date]);
@@ -26,7 +24,7 @@ export function DatePicker({ date, onClickOut, setDate }) {
   const datePicker = useRef();
   useOutsideAlerter(datePicker, onClickOut);
   return (
-    <div className="date-picker" ref={datePicker}>
+    <div className="date-picker" ref={datePicker} style={style}>
       <div className="date-picker-header">
         <div className="month-name">{getMonthString(displayedMonth)}</div>
         <div className="date-picker-arrows">
