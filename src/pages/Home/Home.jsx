@@ -1,37 +1,35 @@
 import "./Home.scss";
 import React from "react";
-
+import { Navigate } from "react-router-dom";
+import useAuthContext from "../../hooks/useAuthContext";
+import TaskCardMain from "../../components/TaskCardMain/TaskCardMain";
+// Mock for dev
+const tasks = [
+  {
+    name: "Parcial Presencial EDP",
+  },
+  {
+    name: "Implementar funcionalidad: Task Manager",
+  },
+  {
+    name: "Hacer Mandados",
+  },
+];
 export default function Home() {
+  const { user } = useAuthContext();
+
+  if (!user) {
+    return <Navigate replace to="/login" />;
+  }
+
+  const taskList = tasks.map((task, index) => (
+    <TaskCardMain task={task} key={index} />
+  ));
+
   return (
-    <div className="content">
-      <h1>Home</h1>
-      <p className="sm">This is mobile</p>
-      <p className="md">This is tablet</p>
-      <p className="lg">This is screen</p>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique
-        porro, ullam accusantium saepe consequatur explicabo. Maxime inventore,
-        molestias perspiciatis ducimus, accusamus alias voluptas, impedit ab sit
-        tempore natus porro quisquam.
-      </p>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique
-        porro, ullam accusantium saepe consequatur explicabo. Maxime inventore,
-        molestias perspiciatis ducimus, accusamus alias voluptas, impedit ab sit
-        tempore natus porro quisquam.
-      </p>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique
-        porro, ullam accusantium saepe consequatur explicabo. Maxime inventore,
-        molestias perspiciatis ducimus, accusamus alias voluptas, impedit ab sit
-        tempore natus porro quisquam.
-      </p>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique
-        porro, ullam accusantium saepe consequatur explicabo. Maxime inventore,
-        molestias perspiciatis ducimus, accusamus alias voluptas, impedit ab sit
-        tempore natus porro quisquam.
-      </p>
+    <div className="content content-home" id="content-home">
+      <h2>Upcoming Tasks:</h2>
+      {taskList}
     </div>
   );
 }

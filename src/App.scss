@@ -6,6 +6,11 @@
     display: grid;
     grid-template-areas: "drawer content";
   }
+  @include screen(lg) {
+    display: grid;
+    grid-template-areas: "drawer content interactive";
+    grid-template-columns: min-content 250px auto;
+  }
 }
 
 body {
@@ -21,6 +26,18 @@ a {
 .content {
   width: 90%;
   margin: auto;
+  width: 95%;
+  margin: auto;
+  @include screen(lg) {
+    min-height: 100vh;
+  }
+}
+
+.spacer {
+  height: 3rem;
+  @include screen(lg) {
+    height: 0;
+  }
 }
 
 .wrapper {
@@ -32,4 +49,19 @@ a {
 
 .wrapper-active {
   filter: blur(3px) opacity(70%);
+  filter: blur(3px) opacity(70%);
+  pointer-events: none;
+}
+
+.modal {
+  display: none;
+  background-color: var(--base-lighter-100);
+  position: fixed;
+  z-index: 100;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+
+  border-radius: var(--default-radius);
 }
