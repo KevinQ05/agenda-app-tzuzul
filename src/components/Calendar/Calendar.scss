@@ -24,9 +24,11 @@
         .calendar-grid-item:not(.selected-item) {
             transition: background 200ms;
 
-            &:hover {
-                background-color: var(--base-lighter-100);
-                cursor: pointer;
+            @include screen(lg) {
+                &:hover {
+                    background-color: var(--base-lighter-100);
+                    cursor: pointer;
+                }
             }
         }
         .dimmed-item {

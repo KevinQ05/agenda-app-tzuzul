@@ -16,7 +16,6 @@
         @include screen(lg) {
             &:hover {
                 cursor: pointer;
-                background-color: var(--base-100);
             }
         }
     }

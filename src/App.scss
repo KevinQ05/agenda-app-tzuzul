@@ -12,6 +12,7 @@
 body {
     color: var(--base-content);
     background-color: var(--base-100);
+    min-height: 100vh;
     @include screen(lg) {
         overflow-x: hidden;
     }
@@ -24,6 +25,8 @@ a {
 
 .content {
     width: 95%;
+    min-height: 100vh;
+
     margin: auto;
     @include screen(lg) {
         min-height: 100vh;
