@@ -82,14 +82,16 @@ export function Calendar({
         current: displayedMonth,
       };
       return (
-        <DayNumber
-          day={dayConfig}
-          setDate={setDate}
-          switchMonth={(amount) => {
-            // animateIncrement(amount);
-            incrementMonth(amount);
-          }}
-        />
+        <div key={index}>
+          <DayNumber
+            day={dayConfig}
+            setDate={setDate}
+            switchMonth={(amount) => {
+              // animateIncrement(amount);
+              incrementMonth(amount);
+            }}
+          />
+        </div>
       );
     });
     setGridItems(calendarGrid);

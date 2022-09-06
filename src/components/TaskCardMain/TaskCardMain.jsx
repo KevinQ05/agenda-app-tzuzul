@@ -15,7 +15,7 @@ const colors = [
   { name: "Purple", value: "#b371f5" },
 ];
 
-export default function TaskCardMain({ task, setTask }) {
+export default function TaskCardMain({ task, setTask, onClick }) {
   const [accentColor, setAccentColor] = useState(task.color || colors[0]);
   const [isOpen, setIsOpen] = useState(false);
   const [currentDate, setCurrentDate] = useState(
@@ -32,6 +32,7 @@ export default function TaskCardMain({ task, setTask }) {
     const navbar = document.getElementById("mobile-nav");
     navbar.classList.toggle("navbar-slide");
     setIsOpen(!isOpen);
+    onClick();
   }
 
   function handleSave(task) {
