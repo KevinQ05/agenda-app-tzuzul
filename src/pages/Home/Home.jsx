@@ -64,36 +64,42 @@ export default function Home() {
   ));
 
   const AnimatedTaskDetails = animated(TaskDetails);
+  const AnimatedCreateButton = animated(CreateButton);
   return (
     <div className="content content-home" id="content-home">
       <h2>Upcoming Tasks:</h2>
       {taskList}
-      {!isMenuOpen ? (
-        <>
-          <CreateButton createTask={handleOpen} />
-        </>
-      ) : null}
-      {isNew ? (
-        <Transition
-          items={isNew}
-          from={{ marginLeft: "100%" }}
-          enter={{ marginLeft: "0%" }}
-          leave={{ marginLeft: "100%" }}
-        >
-          {(styles, item) =>
-            item && (
-              <AnimatedTaskDetails
-                task={newTask()}
-                style={styles}
-                goBack={handleOpen}
-                onSave={handleSave} //Temporary
-              />
-            )
-          }
-        </Transition>
-      ) : (
-        <></>
-      )}
+
+      <Transition
+        items={!isMenuOpen}
+        from={{ opacity: 0, y: 100 }}
+        enter={{ opacity: 1, y: 0, delay: 350 }}
+        leave={{ opacity: 0, y: 100 }}
+      >
+        {(styles, item) =>
+          item && (
+            <AnimatedCreateButton createTask={handleOpen} style={styles} />
+          )
+        }
+      </Transition>
+
+      <Transition
+        items={isNew}
+        from={{ marginLeft: "100%", opacity: 0 }}
+        enter={{ marginLeft: "0%", opacity: 1 }}
+        leave={{ marginLeft: "100%", opacity: 0 }}
+      >
+        {(styles, item) =>
+          item && (
+            <AnimatedTaskDetails
+              task={newTask()}
+              style={styles}
+              goBack={handleOpen}
+              onSave={handleSave} //Temporary
+            />
+          )
+        }
+      </Transition>
     </div>
   );
 }

@@ -12,6 +12,9 @@
 body {
     color: var(--base-content);
     background-color: var(--base-100);
+    @include screen(lg) {
+        overflow-x: hidden;
+    }
 }
 
 a {

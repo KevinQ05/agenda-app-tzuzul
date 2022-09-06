@@ -12,11 +12,22 @@
         li {
             list-style: none;
         }
-        .calendar-header-item {
-            padding: 6px;
-        }
+        .calendar-header-item,
         .calendar-grid-item {
             padding: 6px;
+            border-radius: 10px;
+            @include screen(lg) {
+                padding: 4px;
+                font-size: small;
+            }
+        }
+        .calendar-grid-item:not(.selected-item) {
+            transition: background 200ms;
+
+            &:hover {
+                background-color: var(--base-lighter-100);
+                cursor: pointer;
+            }
         }
         .dimmed-item {
             color: var(--base-content-200);
@@ -24,6 +35,7 @@
         .selected-item {
             background-color: var(--primary-300);
             border-radius: 15px;
+            transition: none;
         }
     }
     .calendar-header {

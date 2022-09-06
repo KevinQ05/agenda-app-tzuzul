@@ -10,16 +10,23 @@
 
     .displayed-date {
         width: 10rem;
+        display: flex;
+        border-radius: var(--default-radius);
+        padding: 0 0.5rem;
+        @include screen(lg) {
+            &:hover {
+                cursor: pointer;
+                background-color: var(--base-100);
+            }
+        }
     }
 
     .date-picker {
         background-color: var(--base-100);
         width: 300px;
         height: 300px;
-        min-height: 300px;
-        min-width: 300px;
         position: absolute;
-        translate: -38px 20px;
+        translate: -38px 30px;
         border-radius: var(--default-radius);
         box-shadow: 1px 14px 22px -5px rgba(43, 45, 47, 0.59);
         -webkit-box-shadow: 1px 14px 22px -5px rgba(43, 45, 47, 0.59);
@@ -29,6 +36,11 @@
         padding: 1rem;
         padding-top: 0.5rem;
         padding-bottom: 0;
+
+        @include screen(lg) {
+            width: 250px;
+            height: 250px;
+        }
         .date-picker-header {
             display: flex;
             align-items: center;
