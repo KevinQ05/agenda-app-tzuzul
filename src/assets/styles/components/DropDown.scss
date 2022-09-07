@@ -1,0 +1,49 @@
+@keyframes slideOpen {
+    from {
+        height: auto;
+    }
+    to {
+        height: 500px;
+    }
+}
+
+.dropdown {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: var(--button-radius);
+    user-select: none;
+    animation-name: slideOpen;
+    overflow: hidden;
+
+    .dropdown-label-container {
+        @extend %default-flex;
+        @extend %button;
+        justify-content: space-between;
+        width: 100%;
+        height: 35px;
+        max-height: 35px;
+        margin: 0rem 0.5rem 0.25rem 0.5rem;
+
+        .dropdown-label-text {
+            padding: 0.5rem;
+        }
+
+        .dropdown-label-chevron {
+            margin-left: 0.5rem;
+            width: 25px;
+        }
+    }
+
+    .dropdown-children {
+        align-self: flex-start;
+        width: 100%;
+        list-style: none;
+
+        & > *:not(.dropdown) {
+            padding: 0 0 0.5rem 1.5rem;
+            height: 25px;
+        }
+    }
+}

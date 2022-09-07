@@ -1,0 +1,11 @@
+.drawer-desktop {
+    @extend %drawer;
+    visibility: hidden;
+
+    @include screen(lg) {
+        visibility: visible;
+        min-height: 100vh;
+        width: 170px;
+        margin-bottom: 0;
+    }
+}

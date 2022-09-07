@@ -1,0 +1,36 @@
+.login-dock {
+    background-color: var(--base-200);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--border);
+    border-radius: var(--default-radius);
+
+    margin: auto 0;
+    transform: translateY(-50px);
+
+    .email-field,
+    .password-field,
+    .email-field-input,
+    .password-field-input {
+        width: 200px;
+        margin: 0.2rem auto;
+    }
+    .email-field-input,
+    .password-field-input {
+        background-color: var(--base-100);
+    }
+
+    button {
+        border: none;
+    }
+
+    .login-btn {
+        color: var(--base-content);
+        background-color: var(--base-lighter-100);
+        width: 200px;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+        border-color: var(--base-lighter-200);
+    }
+}
