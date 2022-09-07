@@ -8,12 +8,25 @@
     height: fit-content;
 }
 
+.task-card-wrapper {
+    border-radius: 1.2rem;
+    background-color: var(--warning-100);
+    position: relative;
+    // display: grid;
+    // grid-template-columns: auto auto;
+    .task-card-trash-icon {
+        position: absolute;
+        z-index: 0;
+        top: 35%;
+        left: 2rem;
+    }
+}
+
 .task-card-container {
     @extend %task-card-mobile;
     border-style: solid;
     border-width: 0 0 0 5px;
     overflow: hidden;
-
     @include screen(lg) {
         font-size: small;
         &:hover {
@@ -66,7 +79,7 @@
     left: 0;
     padding: 1rem;
     overflow: hidden;
-
+    z-index: 100;
     @include screen(lg) {
         width: 300px;
         height: 500px;

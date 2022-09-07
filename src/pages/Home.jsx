@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import defaultTasks from "../data/tasks.json";
 import CreateButton from "../components/CreateButton";
 import { v4 as uuidv4 } from "uuid";
-import { Transition, animated } from "react-spring";
 import TaskDetails from "../components/TaskDetails";
 import WithTransition from "../components/withTransition";
 
@@ -29,6 +28,13 @@ export default function Home() {
       id: uuidv4(),
     };
     return defaultValues;
+  }
+
+  function deleteTask(data) {
+    const tasksCopy = tasks.slice();
+    const taskIndex = tasksCopy.findIndex((task) => task.id === data.id);
+    tasksCopy.splice(taskIndex, 1);
+    setTasks(tasksCopy);
   }
 
   function handleOpen() {
@@ -60,6 +66,7 @@ export default function Home() {
       key={task.id}
       setTask={(data) => setTaskById(data)}
       onClick={() => setIsMenuOpen(!isMenuOpen)}
+      deleteTask={deleteTask}
     />
   ));
 
