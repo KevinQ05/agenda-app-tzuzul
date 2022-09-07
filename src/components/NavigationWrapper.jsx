@@ -3,13 +3,14 @@ import DrawerDesktop from "./DrawerDesktop";
 import Spacer from "./Spacer";
 import Navbar from "./Navbar";
 import { useState } from "react";
-import { useTransition, animated } from "react-spring";
 import Drawer from "./Drawer";
 import { Outlet } from "react-router-dom";
+import WithTransition from "./withTransition";
 
 export default function NavigationWrapper(props) {
   const [drawerActive, setDrawerActive] = useState(false);
-  const transition = useTransition(drawerActive, {
+
+  const DrawerMobile = WithTransition(Drawer, drawerActive, {
     from: { x: "-100%" },
     enter: { x: "0" },
     leave: { x: "-100%" },
@@ -26,12 +27,12 @@ export default function NavigationWrapper(props) {
     wrapper.classList.add("wrapper-active");
   };
 
-  const AnimatedDrawer = animated(Drawer);
   return (
     <>
-      {transition((style, item) =>
+      {/* {transition((style, item) =>
         item ? <AnimatedDrawer style={style} onClickOut={hideDrawer} /> : <></>
-      )}
+      )} */}
+      <DrawerMobile onClickOut={hideDrawer} />
       <DrawerDesktop />
       <div className="wrapper" id="wrapper">
         <Navbar onMenuClick={showDrawer} />

@@ -44,16 +44,11 @@ export default function TaskCardMain({ task, setTask, onClick }) {
   }, [accentColor]);
 
   // For animation
-  const slideFromRight = {
+  const TaskDetailsWithTransition = withTransition(TaskDetails, isOpen, {
     from: { marginLeft: "100%", opacity: 0.5 },
     enter: { marginLeft: "0%", opacity: 1 },
     leave: { marginLeft: "100%", opacity: 0.5 },
-  };
-  const TaskDetailsWithTransition = withTransition(
-    TaskDetails,
-    isOpen,
-    slideFromRight
-  );
+  });
   return (
     <>
       <div
