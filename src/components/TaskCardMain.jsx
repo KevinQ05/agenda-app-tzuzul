@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useState } from "react";
-import { Transition, animated } from "react-spring";
 import { useEffect } from "react";
 
 import TaskDetails from "./TaskDetails";
+import withTransition from "./withTransition";
 
 const colors = [
   { name: "default", value: "#d4d2d6" },
@@ -44,7 +44,16 @@ export default function TaskCardMain({ task, setTask, onClick }) {
   }, [accentColor]);
 
   // For animation
-  const AnimatedTaskDetails = animated(TaskDetails);
+  const slideFromRight = {
+    from: { marginLeft: "100%", opacity: 0.5 },
+    enter: { marginLeft: "0%", opacity: 1 },
+    leave: { marginLeft: "100%", opacity: 0.5 },
+  };
+  const TaskDetailsWithTransition = withTransition(
+    TaskDetails,
+    isOpen,
+    slideFromRight
+  );
   return (
     <>
       <div
@@ -63,7 +72,7 @@ export default function TaskCardMain({ task, setTask, onClick }) {
           </span>
         </div>
       </div>
-      <Transition
+      {/* <Transition
         items={isOpen}
         from={{ marginLeft: "100%", opacity: 0 }}
         enter={{ marginLeft: "0%", opacity: 1 }}
@@ -79,7 +88,12 @@ export default function TaskCardMain({ task, setTask, onClick }) {
             />
           )
         }
-      </Transition>
+      </Transition> */}
+      <TaskDetailsWithTransition
+        task={task}
+        goBack={handleOpen}
+        onSave={handleSave}
+      />
     </>
   );
 }

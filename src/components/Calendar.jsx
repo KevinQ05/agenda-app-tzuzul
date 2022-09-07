@@ -3,7 +3,7 @@ import React from "react";
 import DayNumber from "./DayNumber";
 import { getMonthFromIndex } from "../utils/helpers/calendar";
 import { useEffect, useState } from "react";
-// import { useSpring, animated } from "react-spring";
+import { Transition, animated } from "react-spring";
 
 const daysOfWeek = [
   <span className="calendar-header-item" key={"sunday"}>
@@ -38,24 +38,6 @@ export function Calendar({
 }) {
   const [gridItems, setGridItems] = useState([]);
 
-  // const styles = useSpring({
-  //   from: {
-  //     opacity: 0,
-  //   },
-  //   to: {
-  //     opacity: 1,
-  //   },
-  //   leave: {
-  //     opacity: 0,
-  //   },
-  // });
-
-  // const animateIncrement = (amount) => {
-  //   if (amount === 0) return;
-  //   api.start({
-  //     x: 100 * amount,
-  //   });
-  // };
   // Due to MATHS, index - day is constant for days of the month, and not for days outside it
   // will never get bigger than 5
   useEffect(() => {
@@ -95,6 +77,7 @@ export function Calendar({
     });
     setGridItems(calendarGrid);
   }, [days]);
+
   return (
     <div className="calendar">
       <div className="calendar-header">{daysOfWeek}</div>
