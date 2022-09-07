@@ -45,15 +45,18 @@ export default function TaskCardMain({ task, setTask, onClick, deleteTask }) {
   }
 
   const [{ x, opacity }, api] = useSpring(() => ({ x: 0, opacity: 0 }));
-  const bind = useDrag(({ down, movement: [mx] }) => {
-    if (x.get() > 129 && !down) {
-      deleteTask(task);
-    }
-    api.start({
-      x: down ? getShiftAmount(mx, 130) : 0,
-      opacity: down && mx > 50 ? 1 : 0,
-    });
-  });
+  const bind = useDrag(
+    ({ down, movement: [mx] }) => {
+      if (x.get() > 99 && !down) {
+        deleteTask(task);
+      }
+      api.start({
+        x: down ? getShiftAmount(mx, 100) : 0,
+        opacity: down && mx > 50 ? 1 : 0,
+      });
+    },
+    { threshold: 20 }
+  );
 
   useEffect(() => {
     setBorderColor(accentColor.value);
@@ -79,7 +82,7 @@ export default function TaskCardMain({ task, setTask, onClick, deleteTask }) {
         ref={taskCard}
         onClick={handleOpen}
         {...bind()}
-        style={{ x, touchAction: "none" }}
+        style={{ x, touchAction: "pan-y" }}
       >
         <div className="task-card-header">
           <div className="task-card task-card-title">{task.name}</div>
