@@ -67,23 +67,6 @@ export default function TaskCardMain({ task, setTask, onClick }) {
           </span>
         </div>
       </div>
-      {/* <Transition
-        items={isOpen}
-        from={{ marginLeft: "100%", opacity: 0 }}
-        enter={{ marginLeft: "0%", opacity: 1 }}
-        leave={{ marginLeft: "100%", opacity: 0 }}
-      >
-        {(styles, item) =>
-          item && (
-            <AnimatedTaskDetails
-              task={task}
-              style={styles}
-              goBack={handleOpen}
-              onSave={handleSave} //Temporary
-            />
-          )
-        }
-      </Transition> */}
       <TaskDetailsWithTransition
         task={task}
         goBack={handleOpen}

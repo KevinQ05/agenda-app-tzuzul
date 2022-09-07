@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { Calendar } from "./Calendar";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
 import { getCalendarDays, getMonthString } from "../utils/helpers/calendar";
+import WithTransition from "./withTransition";
 
 export function DatePicker({ date, onClickOut, setDate, style }) {
   const [displayedMonth, setDisplayedMonth] = useState(date);
@@ -23,6 +24,7 @@ export function DatePicker({ date, onClickOut, setDate, style }) {
 
   const datePicker = useRef();
   useOutsideAlerter(datePicker, onClickOut);
+
   return (
     <div className="date-picker" ref={datePicker} style={style}>
       <div className="date-picker-header">

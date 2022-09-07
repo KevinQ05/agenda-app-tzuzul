@@ -3,7 +3,6 @@ import React from "react";
 import DayNumber from "./DayNumber";
 import { getMonthFromIndex } from "../utils/helpers/calendar";
 import { useEffect, useState } from "react";
-import { Transition, animated } from "react-spring";
 
 const daysOfWeek = [
   <span className="calendar-header-item" key={"sunday"}>
@@ -68,7 +67,6 @@ export function Calendar({
             day={dayConfig}
             setDate={setDate}
             switchMonth={(amount) => {
-              // animateIncrement(amount);
               incrementMonth(amount);
             }}
           />

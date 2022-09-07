@@ -8,6 +8,7 @@ import CreateButton from "../components/CreateButton";
 import { v4 as uuidv4 } from "uuid";
 import { Transition, animated } from "react-spring";
 import TaskDetails from "../components/TaskDetails";
+import WithTransition from "../components/withTransition";
 
 export default function Home() {
   const [tasks, setTasks] = useState(defaultTasks.tasks);
@@ -62,43 +63,27 @@ export default function Home() {
     />
   ));
 
-  const AnimatedTaskDetails = animated(TaskDetails);
-  const AnimatedCreateButton = animated(CreateButton);
+  const AnimatedTaskDetails = WithTransition(TaskDetails, isNew, {
+    from: { marginLeft: "100%", opacity: 0 },
+    enter: { marginLeft: "0%", opacity: 1 },
+    leave: { marginLeft: "100%", opacity: 0 },
+  });
+  const AnimatedCreateButton = WithTransition(CreateButton, !isMenuOpen, {
+    from: { opacity: 0, y: 100 },
+    enter: { opacity: 1, y: 0, delay: 350 },
+    leave: { opacity: 0, y: 100 },
+  });
+
   return (
     <div className="content content-home" id="content-home">
       <h2>Upcoming Tasks:</h2>
       {taskList}
-
-      <Transition
-        items={!isMenuOpen}
-        from={{ opacity: 0, y: 100 }}
-        enter={{ opacity: 1, y: 0, delay: 350 }}
-        leave={{ opacity: 0, y: 100 }}
-      >
-        {(styles, item) =>
-          item && (
-            <AnimatedCreateButton createTask={handleOpen} style={styles} />
-          )
-        }
-      </Transition>
-
-      <Transition
-        items={isNew}
-        from={{ marginLeft: "100%", opacity: 0 }}
-        enter={{ marginLeft: "0%", opacity: 1 }}
-        leave={{ marginLeft: "100%", opacity: 0 }}
-      >
-        {(styles, item) =>
-          item && (
-            <AnimatedTaskDetails
-              task={newTask()}
-              style={styles}
-              goBack={handleOpen}
-              onSave={handleSave} //Temporary
-            />
-          )
-        }
-      </Transition>
+      <AnimatedCreateButton createTask={handleOpen} />
+      <AnimatedTaskDetails
+        task={newTask()}
+        goBack={handleOpen}
+        onSave={handleSave}
+      />
     </div>
   );
 }
