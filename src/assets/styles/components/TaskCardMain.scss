@@ -12,6 +12,7 @@
     border-radius: 1.2rem;
     background-color: var(--warning-100);
     position: relative;
+    max-height: 5rem;
     // display: grid;
     // grid-template-columns: auto auto;
     .task-card-trash-icon {
@@ -27,6 +28,7 @@
     border-style: solid;
     border-width: 0 0 0 5px;
     overflow: hidden;
+    max-height: 5rem;
     @include screen(lg) {
         font-size: small;
         &:hover {

@@ -6,6 +6,8 @@ import { FaTrashAlt } from "react-icons/fa";
 
 import TaskDetails from "./TaskDetails";
 import withTransition from "./withTransition";
+import { useDrag } from "@use-gesture/react";
+
 const colors = [
   { name: "default", value: "#d4d2d6" },
   { name: "Green", value: "#32a852" },
@@ -42,27 +44,16 @@ export default function TaskCardMain({ task, setTask, onClick, deleteTask }) {
     setTask(task);
   }
 
-  const [styles, api] = useSpring(() => ({ x: 0 }));
-  const [trashStyle, trashApi] = useSpring(() => ({ opacity: 0 }));
-
-  function handleDrag(e) {
-    const shiftAmount = getShiftAmount(e, 120);
-    api.start({ x: shiftAmount });
-    trashApi.start({ opacity: 1 });
-    if (shiftAmount === 120) {
-      setIsBeingDeleted(true);
-    } else if (shiftAmount < 120) {
-      setIsBeingDeleted(false);
-    }
-  }
-
-  function handleDragEnd() {
-    trashApi.start({ opacity: 0 });
-    if (isBeingDeleted) {
-      console.log("deleted");
+  const [{ x, opacity }, api] = useSpring(() => ({ x: 0, opacity: 0 }));
+  const bind = useDrag(({ down, movement: [mx] }) => {
+    if (x.get() > 129 && !down) {
       deleteTask(task);
     }
-  }
+    api.start({
+      x: down ? getShiftAmount(mx, 130) : 0,
+      opacity: down && mx > 50 ? 1 : 0,
+    });
+  });
 
   useEffect(() => {
     setBorderColor(accentColor.value);
@@ -76,7 +67,10 @@ export default function TaskCardMain({ task, setTask, onClick, deleteTask }) {
   });
   return (
     <div className="task-card-wrapper">
-      <animated.span className="task-card-trash-icon" style={trashStyle}>
+      <animated.span
+        className="task-card-trash-icon"
+        style={{ opacity, touchAction: "none" }}
+      >
         <FaTrashAlt size={20} />
       </animated.span>
       <animated.div
@@ -84,10 +78,8 @@ export default function TaskCardMain({ task, setTask, onClick, deleteTask }) {
         id="task-card-container"
         ref={taskCard}
         onClick={handleOpen}
-        draggable={true}
-        onDrag={handleDrag}
-        onDragEnd={handleDragEnd}
-        style={styles}
+        {...bind()}
+        style={{ x, touchAction: "none" }}
       >
         <div className="task-card-header">
           <div className="task-card task-card-title">{task.name}</div>
@@ -136,11 +128,10 @@ function getDateString(date) {
   } ${date.getDate()}`;
 }
 
-function getShiftAmount(e, cap = 130) {
-  const eventOffset = e.nativeEvent.offsetX;
-  if (eventOffset > 0 && eventOffset < cap) {
-    return eventOffset;
-  } else if (eventOffset > cap) {
+function getShiftAmount(mx, cap = 130) {
+  if (mx > 0 && mx < cap) {
+    return mx;
+  } else if (mx > cap) {
     return cap;
   }
   return 0;
