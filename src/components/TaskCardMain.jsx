@@ -23,7 +23,6 @@ export default function TaskCardMain({ task, setTask, onClick, deleteTask }) {
   const [currentDate, setCurrentDate] = useState(
     task.date ? new Date(task.date) : new Date()
   );
-  const [isBeingDeleted, setIsBeingDeleted] = useState(false);
 
   const taskCard = useRef();
 
