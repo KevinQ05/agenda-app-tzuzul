@@ -2,10 +2,6 @@
   display: grid;
   @include screen(lg) {
     display: grid;
-    grid-template-areas: "drawer content";
-  }
-  @include screen(lg) {
-    display: grid;
     grid-template-areas: "drawer content interactive";
     grid-template-columns: min-content 250px auto;
   }
@@ -14,6 +10,10 @@
 body {
   color: var(--base-content);
   background-color: var(--base-100);
+  min-height: 100vh;
+  @include screen(lg) {
+    overflow-x: hidden;
+  }
 }
 
 a {
@@ -22,9 +22,9 @@ a {
 }
 
 .content {
-  width: 90%;
-  margin: auto;
   width: 95%;
+  min-height: 100vh;
+
   margin: auto;
   @include screen(lg) {
     min-height: 100vh;
@@ -46,7 +46,6 @@ a {
 }
 
 .wrapper-active {
-  filter: blur(3px) opacity(70%);
   filter: blur(3px) opacity(70%);
   pointer-events: none;
 }
