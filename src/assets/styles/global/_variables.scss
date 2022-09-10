@@ -1,0 +1,89 @@
+// Responsive breakpoints inspired from Tailwind
+// Use by @include screen( )
+@mixin screen($size: sm) {
+    @if $size == sm {
+        @media only screen and (min-width: 576px) {
+            @content;
+        }
+    }
+    @if $size == md {
+        @media only screen and (min-width: 768px) {
+            @content;
+        }
+    }
+    @if $size == lg {
+        @media only screen and (min-width: 1024px) {
+            @content;
+        }
+    }
+}
+
+// Default style classes
+%default-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%button {
+    border-radius: var(--button-radius);
+    transition: all 150ms;
+    &:hover {
+        background-color: var(--base-100);
+        cursor: pointer;
+    }
+}
+
+%drawer {
+    @include screen(lg) {
+        position: relative;
+        grid-area: drawer;
+        font-size: 0.9rem;
+    }
+
+    background-color: var(--base-300);
+    position: fixed;
+    z-index: 200;
+    min-height: 100%;
+    width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-width: 0 2px 0 0;
+    border-style: solid;
+    border-color: var(--border);
+    border-radius: var(--default-radius);
+    padding: 1.5rem 0 1.5rem 0;
+}
+
+// Default Theme
+:root {
+    --base-lighter-100: #484b5c;
+    --base-lighter-200: #393b49;
+    --base-100: #262833;
+    --base-200: #1b1f28;
+    --base-300: #15161e;
+
+    --base-content: #f2f1f1d9;
+    --base-content-100: #cfceceaf;
+    --base-content-200: #cfcece84;
+
+    --primary-100: #83dec4;
+    --primary-200: #4acfac;
+    --primary-300: #00b589;
+
+    --warning-100: #dd5353;
+
+    --border: #36394c;
+
+    --button-radius: 0.5rem;
+    --button-color: #424550;
+    --button-border: #616575;
+    --default-radius: 0.5rem;
+}
+
+.purple {
+    --primary-100: rgb(183, 112, 230);
+}

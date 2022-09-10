@@ -1,7 +1,6 @@
-import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 
 import Login from "./pages/Login/Login";
 import NavigationWrapper from "./components/NavigationWrapper/NavigationWrapper";

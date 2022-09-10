@@ -1,0 +1,24 @@
+@import "./global/variables";
+
+//App & index
+@import "../../App.scss";
+@import "../../index.scss";
+
+// Componentes
+@import "./components/Button.scss";
+@import "./components/Calendar.scss";
+@import "./components/CreateButton.scss";
+@import "./components/DateForm.scss";
+@import "./components/Drawer.scss";
+@import "./components/DrawerDesktop.scss";
+@import "./components/LoginDock.scss";
+@import "./components/Logo.scss";
+@import "./components/Navbar.scss";
+@import "./components/Navbar.scss";
+@import "./components/TaskCardMain.scss";
+@import "./components/UserCard.scss";
+@import "./components/DropDown.scss";
+
+// Pages
+@import "./pages/Home.scss";
+@import "./pages/Login.scss";
