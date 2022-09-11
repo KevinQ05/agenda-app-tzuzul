@@ -1,64 +1,64 @@
 #root {
+  display: grid;
+  @include screen(lg) {
     display: grid;
-    @include screen(lg) {
-        display: grid;
-        grid-template-areas: "drawer content interactive";
-        grid-template-columns: min-content 250px auto;
-    }
+    grid-template-areas: "drawer content interactive";
+    grid-template-columns: min-content 250px auto;
+  }
 }
 
 body {
-    color: var(--base-content);
-    background-color: var(--base-100);
-    min-height: 100vh;
-    @include screen(lg) {
-        overflow-x: hidden;
-    }
+  color: var(--base-content);
+  background-color: var(--base-100);
+  min-height: 100vh;
+  @include screen(lg) {
+    overflow-x: hidden;
+  }
 }
 
 a {
-    color: var(--base-content);
-    text-decoration: none;
+  color: var(--base-content);
+  text-decoration: none;
 }
 
 .content {
-    width: 95%;
-    min-height: 100vh;
+  width: 95%;
+  min-height: 100vh;
 
-    margin: auto;
-    @include screen(lg) {
-        min-height: 100vh;
-    }
+  margin: auto;
+  @include screen(lg) {
+    min-height: 100vh;
+  }
 }
 
 .spacer {
-    height: 3rem;
-    @include screen(lg) {
-        height: 0;
-    }
+  height: 3rem;
+  @include screen(lg) {
+    height: 0;
+  }
 }
 
 .wrapper {
-    @include screen(lg) {
-        grid-area: content;
-    }
-    transition: all 300ms ease-out;
+  @include screen(lg) {
+    grid-area: content;
+  }
+  transition: all 300ms ease-out;
 }
 
 .wrapper-active {
-    filter: blur(3px) opacity(70%);
-    pointer-events: none;
+  filter: blur(3px) opacity(70%);
+  pointer-events: none;
 }
 
 .modal {
-    display: none;
-    background-color: var(--base-lighter-100);
-    position: fixed;
-    z-index: 100;
-    top: 15%;
-    left: 5%;
-    width: 90%;
-    height: 70%;
+  display: none;
+  background-color: var(--base-lighter-100);
+  position: fixed;
+  z-index: 100;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
 
-    border-radius: var(--default-radius);
+  border-radius: var(--default-radius);
 }

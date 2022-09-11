@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 
 import Login from "./pages/Login";
 import NavigationWrapper from "./components/NavigationWrapper";
+import Nomatch from "./components/Nomatch";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Nomatch />} />
       </Routes>
     </Router>
   );
