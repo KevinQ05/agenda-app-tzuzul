@@ -1,26 +1,34 @@
+import React from "react";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import useAuthContext from "../hooks/useAuthContext";
 
-export default function LoginDock({ setIsLogged }) {
-  const { login } = useAuthContext();
-  const Register = () => {
-    setIsLogged(false);
-  };
+const Register = ({ setIsLogged }) => {
   const email = useRef();
   const password = useRef();
+  const name = useRef();
 
-  let navigate = useNavigate();
-
-  async function handleSubmit(event) {
+  const login = () => {
+    setIsLogged(true);
+  };
+  const handleSubmit = (event) => {
     event.preventDefault();
-    await login(email, password);
-    navigate("../", { replace: true });
-  }
+    console.log(email.current.value);
+    console.log(password.current.value);
+    console.log(name.current.value);
+  };
   return (
     <>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form className="login-dock">
+        <label htmlFor="name-field" className="email-field">
+          Name:{" "}
+        </label>
+
+        <input
+          ref={name}
+          type="text"
+          className="email-field-input"
+          id="name-field"
+        />
         <label htmlFor="email-field" className="email-field">
           Email:{" "}
         </label>
@@ -47,10 +55,12 @@ export default function LoginDock({ setIsLogged }) {
         >
           Log In
         </button>
-        <button className="btn register-btn" onClick={() => Register()}>
-          New here? Sign in!
+        <button className="btn register-btn" onClick={() => login()}>
+          Login
         </button>
       </form>
     </>
   );
-}
+};
+
+export default Register;
