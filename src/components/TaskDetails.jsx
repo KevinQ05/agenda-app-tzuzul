@@ -5,20 +5,11 @@ import { ImParagraphLeft } from "react-icons/im";
 import Button from "./Button";
 import { FiArrowLeft, FiUsers } from "react-icons/fi";
 import DateForm from "./DateForm";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useReducer } from "react";
+import taskReducer from "../reducers/taskReducer";
 
 export default function TaskDetails({ task, goBack, style, onSave }) {
-  const [taskInfo, setTaskInfo] = useState(task);
-
-  const [currentDate, setCurrentDate] = useState(
-    task.date ? new Date(taskInfo.date) : new Date()
-  );
-
-  const [title, setTitle] = useState(taskInfo.name);
-
-  useEffect(() => {
-    setTaskInfo({ ...task, date: currentDate, name: title });
-  }, [currentDate, title]);
+  const [state, dispatch] = useReducer(taskReducer, task);
 
   return (
     <div className="task-full" style={style}>
@@ -30,13 +21,13 @@ export default function TaskDetails({ task, goBack, style, onSave }) {
       </div>
       <textarea
         className="task-full-title"
-        value={title}
+        value={state.name}
         maxLength={50}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => dispatch({ type: "TITLE", payload: e.target.value })}
       ></textarea>
       <DateForm
-        date={currentDate}
-        setDate={(newDate) => setCurrentDate(newDate)}
+        date={new Date(state.date)}
+        setDate={(newDate) => dispatch({ type: "DATE", payload: newDate })}
       />
       <div className="task-full-users">
         <FiUsers className="users-item" size={20} />
@@ -55,7 +46,7 @@ export default function TaskDetails({ task, goBack, style, onSave }) {
       <div className="task-full-footer">
         <Button
           className="footer-save"
-          onClick={() => onSave(taskInfo)}
+          onClick={() => onSave(state)}
           id="footer-save"
         >
           Save

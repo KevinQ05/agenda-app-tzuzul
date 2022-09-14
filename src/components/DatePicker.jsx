@@ -5,7 +5,6 @@ import { useRef, useState, useEffect } from "react";
 import { Calendar } from "./Calendar";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
 import { getCalendarDays, getMonthString } from "../utils/helpers/calendar";
-import WithTransition from "./withTransition";
 
 export function DatePicker({ date, onClickOut, setDate, style }) {
   const [displayedMonth, setDisplayedMonth] = useState(date);
